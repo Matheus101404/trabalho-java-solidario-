@@ -8,61 +8,61 @@ public class Usuario {
     private String endereco;
 
 
-public Usuario(int id, String nome, String telefone, String email, String endereco){
-    this.id = id;
-    this.nome = nome;
-    this.telefone = telefone;
-    this.email = email;
-    this.endereco = endereco;
-}    
+    public Usuario(int id, String nome, String telefone, String email, String endereco){
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
+    }    
 
-public void setId(int id){
-    this.id = id;
+    public void setId(int id){
+        this.id = id;
 
-}
+    }
 
-public int getId(){
-    return id;
-}
+    public int getId(){
+        return id;
+    }
 
-public void setNome(String nome){
-    this.nome = nome;
+    public void setNome(String nome){
+        this.nome = nome;
 
-}
+    }
 
-public String getNome(){
-    return nome;
+    public String getNome(){
+        return nome;
 
-}
+    }
 
-public void setTelefone(String telefone){
-    this.telefone = telefone;
+    public void setTelefone(String telefone){
+        this.telefone = telefone;
 
-}
+    }
 
-public String getTelefone(){
-    return telefone;
+    public String getTelefone(){
+        return telefone;
 
-}
+    }
 
-public void setEmail(String email){
-    this.email = email;
+    public void setEmail(String email){
+        this.email = email;
 
-}
+    }
 
-public String getEmail(){
-    return email;
+    public String getEmail(){
+        return email;
 
-}
+    }
 
-public void setEndereco(String endereco){
+    public void setEndereco(String endereco){
 
-}
+    }
 
-public String getEndereco(){
-    return endereco;
+    public String getEndereco(){
+        return endereco;
 
-}
+    }
     
 }
 

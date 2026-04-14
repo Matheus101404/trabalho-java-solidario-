@@ -18,7 +18,7 @@ public class ItemDoacaoService {
                 return;
         }
 
-        item.setStatus("DISPONIVEL");
+        item.setStatus(ItemDoacao.STATUS_DISPONIVEL);
         repository.salvar(item);
 
 

@@ -29,9 +29,20 @@ public class ItemDoacaoRepository{
         }
         return filtrados;
     }
-    
-    
 
+    public List<ItemDoacao> buscarPorCategoria(String categoria){
+        List<ItemDoacao> filtrados = new ArrayList<>();
+        for(ItemDoacao item : itens){
+            if(item.getCategoria().equalsIgnoreCase(categoria)){
+                filtrados.add(item);
+            }
+        }
+        return filtrados;
 
-    
+    }    
 }
+    
+    
+
+
+    

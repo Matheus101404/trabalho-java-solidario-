@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import model.ItemDoacao;
 import repository.ItemDoacaoRepository;
 
@@ -21,14 +23,13 @@ public class ItemDoacaoService {
         item.setStatus(ItemDoacao.STATUS_DISPONIVEL);
         repository.salvar(item);
 
+}
 
 
-        
-      
-            
-        
-
-    }
+     public List<ItemDoacao> listarTodos() {
+        return repository.listarTodos();
+     }
+     
 }
     
     

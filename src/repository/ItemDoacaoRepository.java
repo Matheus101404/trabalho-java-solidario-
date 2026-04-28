@@ -39,7 +39,16 @@ public class ItemDoacaoRepository{
         }
         return filtrados;
 
-    }    
+    } 
+    
+   public ItemDoacao buscarPorId(int id){
+        for(ItemDoacao i : itens){
+            if (i.getId() == id) {
+                return i;
+            }
+        } 
+        return null;
+    } 
 }
     
     

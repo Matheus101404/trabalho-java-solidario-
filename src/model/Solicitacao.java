@@ -2,15 +2,15 @@ package model;
 
 public class Solicitacao {
     private int id;
-    private String beneficiario;
-    private String item; 
+    private Beneficiario beneficiario;
+    private ItemDoacao item; 
     private int quantidade;
     private String justificativa;
     private String status;
 
 
 
-public Solicitacao(int id, String beneficiario, String item, int quatidade, String justificativa, String status ){
+public Solicitacao(int id, Beneficiario beneficiario, ItemDoacao item, int quatidade, String justificativa, String status ){
     this.id = id;
     this.beneficiario = beneficiario;
     this.item = item;
@@ -30,22 +30,22 @@ public int getId(){
 
 }
 
-public void setBeneficiario(String beneficiario){
+public void setBeneficiario(Beneficiario beneficiario){
     this.beneficiario = beneficiario;
 
 }
 
-public String getBeneficiario(){
+public Beneficiario getBeneficiario(){
     return beneficiario;
 
 }
 
-public void setItem(String item){
+public void setItem(ItemDoacao item){
     this.item = item;
 
 }
 
-public String getItem(){
+public ItemDoacao getItem(){
     return item;
 
 }

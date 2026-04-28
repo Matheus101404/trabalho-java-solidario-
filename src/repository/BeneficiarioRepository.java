@@ -18,6 +18,15 @@ public class BeneficiarioRepository {
 
     }
 
+    public Beneficiario buscarPorId(int id){
+        for(Beneficiario b : beneficiarios){
+            if(b.getId() == id){
+                return b;
+            }
+        }
+        return null;
+    }
+
 
     
 }

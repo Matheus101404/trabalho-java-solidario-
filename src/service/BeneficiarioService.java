@@ -25,7 +25,7 @@ public class BeneficiarioService {
         return repository.listarTodos();
     }
 
-    public Beneficiario buscarPorId(int id){
+    public Beneficiario buscarPorId(String id){
         return repository.buscarPorId(id);
     }
 

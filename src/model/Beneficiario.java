@@ -3,9 +3,10 @@ package model;
 public class Beneficiario extends Usuario {
     private String tipo;
     private String prioridade;
+    
   
     
-    public Beneficiario(int id, String nome, String telefone, String email, String endereco, String tipo, String prioridade){
+    public Beneficiario(String id, String nome, String telefone, String email, String endereco, String tipo, String prioridade){
         super(id, nome, telefone, email, endereco);
         this.tipo = tipo;
         this.prioridade = prioridade;

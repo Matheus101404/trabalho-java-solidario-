@@ -18,7 +18,7 @@ public class BeneficiarioRepository {
 
     }
 
-    public Beneficiario buscarPorId(int id){
+    public Beneficiario buscarPorId(String id){
         for(Beneficiario b : beneficiarios){
             if(b.getId() == id){
                 return b;

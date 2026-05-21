@@ -1,6 +1,5 @@
 package service;
 import model.Solicitacao;
-import model.Beneficiario;
 import model.ItemDoacao;
 import repository.SolicitacaoRepository;
 
@@ -8,16 +7,18 @@ public class SolicitacaoService {
     private SolicitacaoRepository repository = new SolicitacaoRepository();
 
 
-    public void registrarSolicitacao(Solicitacao solicitacao){
+    public boolean registrarSolicitacao(Solicitacao solicitacao){
         ItemDoacao item = solicitacao.getItem();
 
-        if (item.getStatus().equalsIgnoreCase("DISPONIVEL")) {
-            item.setStatus("SOLICITADO");
-            repository.salvar(solicitacao);
-            System.out.println("Sucesso!");
+        if (!item.getStatus().equalsIgnoreCase(ItemDoacao.STATUS_DISPONIVEL)) {
+           System.out.println("Erro: Item não está disponível");
+           return false;
 
         }else{
-            System.out.println("Erro: Item não está disponivel");
+            item.setStatus(ItemDoacao.STATUS_RESERVADO);
+            repository.salvar(solicitacao);
+            System.out.println("Sucesso!");
+            return true;
 
         }
 

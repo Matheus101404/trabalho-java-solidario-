@@ -5,11 +5,15 @@ import model.Solicitacao;
 
 public class SolicitacaoRepository {
     private List<Solicitacao> solicitacoes = new ArrayList<>();
+    private int proximoId = 1;
+
 
 
 
     public void salvar(Solicitacao solicitacao){
+        solicitacao.setId(proximoId);
         solicitacoes.add(solicitacao);
+        proximoId++;
 
     }
 

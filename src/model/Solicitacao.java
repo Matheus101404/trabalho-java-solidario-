@@ -7,14 +7,19 @@ public class Solicitacao {
     private int quantidade;
     private String justificativa;
     private String status;
+    public static final String STATUS_PEDENTE = "PENDENTE";
+    public static final String STATUS_APROVADA  = "APROVADA";
+    public static final String STATUS_EM_ANALISE = "EM ANALISE";
+    public static final String STATUS_NEGADA = "NEGADA";
+    public static final String STATUS_CONCLUIDA = "CONCLUIDA";
 
 
 
-public Solicitacao(int id, Beneficiario beneficiario, ItemDoacao item, int quatidade, String justificativa, String status ){
+public Solicitacao(int id, Beneficiario beneficiario, ItemDoacao item, int quantidade, String justificativa, String status ){
     this.id = id;
     this.beneficiario = beneficiario;
     this.item = item;
-    this.quantidade = quatidade;
+    this.quantidade = quantidade;
     this.justificativa = justificativa;
     this.status = status;
 

@@ -26,9 +26,13 @@ public class ItemDoacaoService {
 }
 
 
-     public List<ItemDoacao> listarTodos() {
+    public List<ItemDoacao> listarTodos() {
         return repository.listarTodos();
-     }
+    }
+
+    public ItemDoacao buscarPorId(int id){
+        return repository.buscarPorId(id);
+    }
      
 }
     

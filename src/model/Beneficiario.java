@@ -3,6 +3,13 @@ package model;
 public class Beneficiario extends Usuario {
     private String tipo;
     private String prioridade;
+    public static final String PRIORIDADE1 = "PCD";
+    public static final String PRIORIDADE2 = "IDOSOS";
+    public static final String PRIORIDADE3 = "CRIANÇAS";
+    public static final String PRIORIDADE4 = "GERAL";
+    public static final String TIPO1 = "ABRIGO";
+    public static final String TIPO2 = "ONG";
+    public static final String TIPO3 = "ESCOLA";
     
   
     

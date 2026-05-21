@@ -18,6 +18,8 @@ public class ItemDoacao  {
     public static final String CATEGORIA_ROUPA = "ROUPA";
     public static final String CATEGORIA_HIGIENE = "HIGIENE";
     public static final String CATEGORIA_MOVEIS = "MOVEIS";
+    public static final String ESTADO_CONSERVACAO1 = "NOVO";
+    public static final String ESTADO_CONSERVACAO2 = "SEMI-NOVO"; 
     
 
     public ItemDoacao(int id, String nomeItem, String categoria, String descricao, int quantidade, String estadoConservacao, String dataCadastro, String status){

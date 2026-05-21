@@ -20,7 +20,7 @@ public class BeneficiarioRepository {
 
     public Beneficiario buscarPorId(String id){
         for(Beneficiario b : beneficiarios){
-            if(b.getId() == id){
+            if(b.getId().equalsIgnoreCase(id)){
                 return b;
             }
         }

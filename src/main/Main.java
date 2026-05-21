@@ -70,7 +70,7 @@ public class Main {
                     case 7:
                         System.out.println("--- BENEFICIARIOS CADASTRADOS ---");
                         beneficiarioService.listarTodos()
-                                .forEach(beneficiario -> System.out.println(beneficiario.getNome()));
+                                .forEach(beneficiario -> System.out.println(beneficiario.getNome() + " | Prioridade: " + beneficiario.getPrioridade()));
                         break;
 
                     case 0:
@@ -90,11 +90,39 @@ public class Main {
     }
 
     private static void cadastrarNovoItem(Scanner leitor, ItemDoacaoService service) {
+        System.out.println("=== Cadastro de Item ===");
+        System.out.println();
+
         System.out.println("Nome do Item: ");
         String nome = leitor.nextLine();
 
         System.out.println("Categoria: ");
-        String categoria = leitor.nextLine();
+        System.out.println("1 - Alimento");
+        System.out.println("2 - Higiene");
+        System.out.println("3 -  Moveis");
+        System.out.println("4 - Roupa");
+        int opcaoCategoria = leitor.nextInt();
+        leitor.nextLine();
+
+        String categoria;
+
+        switch (opcaoCategoria) {
+            case 1:
+                categoria = ItemDoacao.CATEGORIA_ALIMENTO;
+                break;
+
+            case 2:
+                categoria  = ItemDoacao.CATEGORIA_HIGIENE;
+                break; 
+                
+            case 3:
+                categoria = ItemDoacao.CATEGORIA_MOVEIS;
+                break;   
+        
+            default:
+                categoria = ItemDoacao.CATEGORIA_ROUPA;
+                break;
+        }
 
         System.out.println("Descrição: ");
         String descricao = leitor.nextLine();
@@ -104,13 +132,26 @@ public class Main {
         leitor.nextLine();
 
         System.out.println("Estado de conservação: ");
-        String estadoConservacao = leitor.nextLine();
+        System.out.println("1 - Novo");
+        System.out.println("2 - Semi-Novo");
+        int opcaoConservacao = leitor.nextInt();
+        leitor.nextLine();
+
+        String estadoConservacao;
+
+        if (opcaoConservacao == 1) {
+            estadoConservacao = ItemDoacao.ESTADO_CONSERVACAO1;
+            
+        } else {
+            estadoConservacao = ItemDoacao.ESTADO_CONSERVACAO2;
+        }
+
 
         System.out.println("Data de Cadastro: ");
         String dataCadastro = leitor.nextLine();
 
-        System.out.println("Status: ");
-        String status = leitor.nextLine();
+        String status = ItemDoacao.STATUS_DISPONIVEL;
+
 
         ItemDoacao novo = new ItemDoacao(0, nome, categoria, descricao, quantidade, estadoConservacao, dataCadastro, status);
 
@@ -120,7 +161,8 @@ public class Main {
     }
 
     private static void cadastrarNovoDoador(Scanner leitor, DoadorService service) {
-        System.out.println("--- CADASTRO DO DOADOR ---");
+        System.out.println("=== CADASTRO DO DOADOR ===");
+        System.out.println();
 
         System.out.println("CPF do Doador: ");
         String id = leitor.nextLine();
@@ -172,13 +214,13 @@ public class Main {
 
         String tipo;
         if (opcaoTipo == 1) {
-            tipo = "Abrigo";
+            tipo = Beneficiario.TIPO1;
         
         } else if (opcaoTipo == 2) {
-            tipo = "ONG";
+            tipo = Beneficiario.TIPO2;
             
         } else {
-            tipo = "Escola";
+            tipo = Beneficiario.TIPO3;
         }
 
         System.out.println("Prioridade do Beneficiario: ");
@@ -192,19 +234,19 @@ public class Main {
         
         switch (opcaoPrioridade) {
             case 1:
-                prioridade = "PCD";
+                prioridade = Beneficiario.PRIORIDADE1;
                 break;
 
             case 2:
-                prioridade  = "Idosos";
+                prioridade  = Beneficiario.PRIORIDADE2;
                 break; 
                 
             case 3:
-                prioridade = "Crianças";
+                prioridade = Beneficiario.PRIORIDADE3;
                 break;   
         
             default:
-                prioridade = "Geral";
+                prioridade = Beneficiario.PRIORIDADE4;
                 break;
         }
 
@@ -234,7 +276,7 @@ public class Main {
         }
 
         for (ItemDoacao item : todosItens){
-            System.out.println("ID: [" + item.getId() + "]| ITEM: [" + item.getNomeItem() + "]| QUANTIDADE:" + item.getQuantidade());
+            System.out.println("ID: [" + item.getId() + "]| ITEM: [" + item.getNomeItem() + "]| QUANTIDADE: [" + item.getQuantidade() + "]");
         }
         
 
@@ -252,10 +294,7 @@ public class Main {
         ItemDoacao item = itemService.buscarPorId(idItem);
 
        
-        
-
-        
-        if (beneficiario == null || item == null) {
+         if (beneficiario == null || item == null) {
             System.out.println("ERRO: Beneficiario ou item não encontrado!");
         } else{
             Solicitacao novo = new Solicitacao(0, beneficiario, item, quantidade, justificativa, ItemDoacao.STATUS_PENDENTE);

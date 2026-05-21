@@ -11,6 +11,8 @@ public class ItemDoacaoRepository{
 
 
     public void salvar(ItemDoacao item){
+        int idAutomatico = itens.size() + 1;
+        item.setId(idAutomatico);
         itens.add(item);
 
     }    

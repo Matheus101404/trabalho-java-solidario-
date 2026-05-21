@@ -5,6 +5,7 @@ import java.util.Scanner;
 import model.Beneficiario;
 import model.Doador;
 import model.ItemDoacao;
+import model.Solicitacao;
 import service.BeneficiarioService;
 import service.DoadorService;
 import service.ItemDoacaoService;
@@ -19,7 +20,7 @@ public class Main {
         DoadorService doadorService = new DoadorService();
         int opcao = -1;
 
-        System.out.println("=== SISTEMA DE DOAÇÃO SOLIDÁRIA - CHECKPOINT 1 ===");
+        System.out.println("=== SISTEMA DE DOAÇÃO SOLIDÁRIA ===");
 
         do {
             System.out.println();
@@ -49,6 +50,8 @@ public class Main {
                         break;
 
                     case 3:
+                        realizarSolicitacao(leitor, itemService, beneficiarioService, solicitacaoService);
+                        break;
                         
 
                     case 4:
@@ -109,7 +112,7 @@ public class Main {
         System.out.println("Status: ");
         String status = leitor.nextLine();
 
-        ItemDoacao novo = new ItemDoacao(1, nome, categoria, descricao, quantidade, estadoConservacao, dataCadastro, status);
+        ItemDoacao novo = new ItemDoacao(0, nome, categoria, descricao, quantidade, estadoConservacao, dataCadastro, status);
 
         service.cadastrarItem(novo);
         System.out.println("Item cadastrado com sucesso!");
@@ -120,7 +123,7 @@ public class Main {
         System.out.println("--- CADASTRO DO DOADOR ---");
 
         System.out.println("CPF do Doador: ");
-        int id = leitor.nextInt();
+        String id = leitor.nextLine();
         leitor.nextLine();
 
         System.out.println("Nome do Doador: ");
@@ -142,15 +145,17 @@ public class Main {
     }
 
     private static void cadastrarNovoBeneficiario(Scanner leitor, BeneficiarioService service) {
+        System.out.println("=== Cadastro Beneficiario ===");
+        System.out.println();
+
         System.out.println("CPF do Beneficiario: ");
-        int id = leitor.nextInt();
-        leitor.nextLine();
+        String id = util.Validador.lerCPF(leitor); 
 
         System.out.println("Nome do Beneficiario: ");
         String nome = leitor.nextLine();
 
         System.out.println("Telefone do Beneficiareio: ");
-        String telefone = leitor.nextLine();
+        String telefone = util.Validador.lerTelefone(leitor);
 
         System.out.println("Email do Beneficiario: ");
         String email = leitor.nextLine();
@@ -158,11 +163,50 @@ public class Main {
         System.out.println("Endereço do Beneficiario: ");
         String endereco = leitor.nextLine();
 
-        System.out.println("Tipo de Beneficiario: ");
-        String tipo = leitor.nextLine();
+        System.out.println("Selecione o tipo de Instituição: ");
+        System.out.println("1 - Abrigo");
+        System.out.println("2 - ONG");
+        System.out.println("3 - Escola");
+        int opcaoTipo = leitor.nextInt();
+        leitor.nextLine();
+
+        String tipo;
+        if (opcaoTipo == 1) {
+            tipo = "Abrigo";
+        
+        } else if (opcaoTipo == 2) {
+            tipo = "ONG";
+            
+        } else {
+            tipo = "Escola";
+        }
 
         System.out.println("Prioridade do Beneficiario: ");
-        String prioridade = leitor.nextLine();
+        System.out.println("1 - PCD/Idosos");
+        System.out.println("2 - Crianças");
+        System.out.println("3 - Geral");
+        int opcaoPrioridade = leitor.nextInt();
+        leitor.nextLine();
+
+       String prioridade;
+        
+        switch (opcaoPrioridade) {
+            case 1:
+                prioridade = "PCD";
+                break;
+
+            case 2:
+                prioridade  = "Idosos";
+                break; 
+                
+            case 3:
+                prioridade = "Crianças";
+                break;   
+        
+            default:
+                prioridade = "Geral";
+                break;
+        }
 
         Beneficiario novo = new Beneficiario(id, nome, telefone, email, endereco, tipo, prioridade);
         service.cadastrarBeneficiario(novo);
@@ -173,10 +217,56 @@ public class Main {
     
 
     private static void realizarSolicitacao(Scanner leitor, ItemDoacaoService itemService, BeneficiarioService beneficiarioService, SolicitacaoService solicitacaoService) {
-        System.out.println("Digite o id do ");
-        int id.beneficiarioService = leitor.nextInt();
+        System.out.println("=== SOLICITAÇÃO ===");
+        System.out.println();
 
+        System.out.println("Digite o CPF do Beneficiario: ");
+        String idBeneficiario = util.Validador.lerCPF(leitor);
+        Beneficiario beneficiario = beneficiarioService.buscarPorId(idBeneficiario);
+
+        System.out.println("=== ITENS DISPONÍVEIS PARA DOAÇÃO ===");
+        var todosItens = itemService.listarTodos();
+
+        if (todosItens.isEmpty()) {
+            System.out.println("=== ITENS DISPONÍVEIS PARA DOAÇÃO ===");
+            return;
+            
+        }
+
+        for (ItemDoacao item : todosItens){
+            System.out.println("ID: [" + item.getId() + "]| ITEM: [" + item.getNomeItem() + "]| QUANTIDADE:" + item.getQuantidade());
+        }
+        
+
+        System.out.println("Digite o id do Item: ");
+        int idItem = leitor.nextInt();
+        leitor.nextLine();
+
+        System.out.println("Digite a quantidade: ");
+        int quantidade = leitor.nextInt();
+        leitor.nextLine();
+
+        System.out.println("Justificativa: ");
+        String justificativa = leitor.nextLine();
+
+        ItemDoacao item = itemService.buscarPorId(idItem);
+
+       
+        
+
+        
+        if (beneficiario == null || item == null) {
+            System.out.println("ERRO: Beneficiario ou item não encontrado!");
+        } else{
+            Solicitacao novo = new Solicitacao(0, beneficiario, item, quantidade, justificativa, ItemDoacao.STATUS_PENDENTE);
+            solicitacaoService.registrarSolicitacao(novo);
+
+            System.out.println("Solicitação realizada com sucesso!");
+
+        }
     }
+
+
 
 }   
 

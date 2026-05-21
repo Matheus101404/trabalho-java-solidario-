@@ -13,6 +13,7 @@ public class ItemDoacao  {
     public static final String STATUS_RESERVADO = "RESERVADO";
     public static final String STATUS_ENTREGUE = "ENTREGUE";
     public static final String STATUS_CANCELADO = "CANCELADO";
+    public static final String STATUS_PENDENTE = "PENDENTE";
     public static final String CATEGORIA_ALIMENTO = "ALIMENTO";
     public static final String CATEGORIA_ROUPA = "ROUPA";
     public static final String CATEGORIA_HIGIENE = "HIGIENE";

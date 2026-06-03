@@ -31,6 +31,7 @@ public class Main {
             System.out.println(" 5 - Listar Doadores");
             System.out.println(" 6 - Cadastrar Beneficiario");
             System.out.println(" 7 - Listar Beneficiorios ");
+            System.out.println(" 8 - Listar Solicitações");
             System.out.println(" 0 - Sair");
             System.out.print("Opção: ");
 
@@ -72,6 +73,10 @@ public class Main {
                         beneficiarioService.listarTodos()
                                 .forEach(beneficiario -> System.out.println(beneficiario.getNome() + " | Prioridade: " + beneficiario.getPrioridade()));
                         break;
+
+                    case 8:
+                        solicitacaoService.gerarRelatorioDoacoes();
+                        break;    
 
                     case 0:
                         System.out.println("Encerrando...");
@@ -281,11 +286,11 @@ public class Main {
         
 
         System.out.println("Digite o id do Item: ");
-        int idItem = leitor.nextInt();
+        int idItem = util.Validador.lerNumeroInteiro(leitor, idBeneficiario);
         leitor.nextLine();
 
         System.out.println("Digite a quantidade: ");
-        int quantidade = leitor.nextInt();
+        int quantidade = util.Validador.lerNumeroInteiro(leitor, idBeneficiario);
         leitor.nextLine();
 
         System.out.println("Justificativa: ");

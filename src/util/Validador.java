@@ -36,4 +36,18 @@ public class Validador {
 
         }
     }
+
+
+    public static int lerNumeroInteiro(Scanner leitor, String mensagemErro) {
+    while (true) {
+        try {
+            int numero = leitor.nextInt();
+            leitor.nextLine(); 
+            return numero;
+        } catch (java.util.InputMismatchException e) {
+            System.out.println(mensagemErro);
+            leitor.nextLine(); 
+        }
+    }
+}
 }

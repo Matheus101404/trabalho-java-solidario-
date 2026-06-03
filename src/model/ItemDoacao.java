@@ -70,7 +70,7 @@ public class ItemDoacao  {
 
     }
 
-    public String descricao(){
+    public String getDescricao(){
         return descricao;
 
     }

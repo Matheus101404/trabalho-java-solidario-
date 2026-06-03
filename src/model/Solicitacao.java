@@ -60,7 +60,7 @@ public void setQuantidade(int quantidade){
 
 }
 
-public int setQuantidade(){
+public int getQuantidade(){
     return quantidade;
 
 }

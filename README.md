@@ -59,3 +59,24 @@ A aplicação foi organizada seguindo o padrão multicamadas baseado em responsa
 7. `7 - Listar Beneficiarios` 
 8. `0 - Sair`
 
+# 🤝 Trabalho Java Solidário - Sistema de Gerenciamento de Doações
+
+## 🎯 Objetivo e Impacto Social (ODS)
+Este projeto foi desenvolvido com o propósito de conectar doadores a beneficiários de forma eficiente e transparente. Alinhado com os **Objetivos de Desenvolvimento Sustentável (ODS) da ONU**, especificamente a **ODS 1 (Erradicação da Pobreza)** e a **ODS 2 (Fome Zero e Agricultura Sustentável)**, o sistema serve como uma ferramenta tecnológica para viabilizar e organizar o fluxo de arrecadação e distribuição de itens essenciais (alimentos, roupas, higiene).
+
+## 🛠️ Tecnologias Utilizadas
+- **Linguagem:** Java (JDK 17+)
+- **Persistência de Dados:** Arquivos de texto plano (`.txt`) simulando um banco de dados relacional.
+- **Estrutura Arquitetural:** Padrão multicamadas (Model, Repository, Service, Main).
+
+## 💾 Persistência em Arquivo (Como Funciona?)
+Para atender aos requisitos de persistência sem dependências externas complexas, o sistema utiliza manipulação de arquivos com as classes nativas `BufferedWriter` e `BufferedReader`.
+- `itens.txt`: Armazena o catálogo de itens disponíveis.
+- `beneficiarios.txt`: Armazena o cadastro de pessoas ou entidades beneficiadas.
+- `solicitacoes.txt`: Registra o histórico e o status de cada pedido, utilizando chaves relacionais para associar beneficiários e itens.
+
+## 🚀 Como Executar o Projeto
+1. Certifique-se de ter o Java instalado na máquina (`java --version`).
+2. Clone o repositório ou abra a pasta no VS Code.
+3. Execute a classe `Main.java`.
+4. Os arquivos `.txt` serão gerados automaticamente no diretório raiz na primeira operação de salvamento.

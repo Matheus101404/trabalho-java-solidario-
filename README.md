@@ -56,8 +56,9 @@ A aplicação foi organizada seguindo o padrão multicamadas baseado em responsa
 4. `4 - Cadastrar Doador` 
 5. `5 - Listar Doadores` 
 6. `6 - Cadastrar Beneficiario` 
-7. `7 - Listar Beneficiarios` 
-8. `0 - Sair`
+7. `7 - Listar Beneficiarios`
+8. `7 - Listar Solicitações`
+9. `0 - Sair`
 
 # 🤝 Trabalho Java Solidário - Sistema de Gerenciamento de Doações
 
